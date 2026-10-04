@@ -1,8 +1,8 @@
 const guests = {
   marie: { name: 'Marie', lang: 'fr', gender: 'f' },
-  john: { name: 'John', lang: 'en' },
-  giyeon: { name: 'Giyeon', lang: 'fr' },
-  gayeong: { name: 'Gayeong', lang: 'en' },
+  john: { name: 'John', lang: 'en', gender: 'm' },
+  giyeon: { name: 'Giyeon', lang: 'fr', gender: 'f' },
+  gayeong: { name: 'Gayeong', lang: 'en', gender: 'f' },
 }
 
 const texts = {
@@ -12,6 +12,7 @@ const texts = {
   },
   fr: {
     to: { m: 'Cher', f: 'Chère', default: 'À.' },
+    after: ',',
     msg: 'Votre présence sera le plus beau des cadeaux.',
   },
 }
@@ -28,7 +29,7 @@ const dear = document.getElementById('dear')
 if (guest) {
   const to = texts[lang].to
   const salutation = to[guest.gender] ?? to.default
-  dear.textContent = `${salutation} ${guest.name}`
+  dear.textContent = `${salutation} ${guest.name}${texts[lang].after ?? ''}`
 } else {
   dear.hidden = true
 }
